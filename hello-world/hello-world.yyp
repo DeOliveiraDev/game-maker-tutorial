@@ -34,8 +34,10 @@
   },
   "name":"hello-world",
   "resources":[
+    {"id":{"name":"Obj_hitbox","path":"objects/Obj_hitbox/Obj_hitbox.yy",},},
     {"id":{"name":"obj_menu","path":"objects/obj_menu/obj_menu.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Spr_hitbox","path":"sprites/Spr_hitbox/Spr_hitbox.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
