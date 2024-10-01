@@ -3,22 +3,22 @@
 // Simulador de gravidade, a cada instante aumentamos a gravidade do player, fazendo com que ele caia mais rapidamente.
 // Se quisermos que o player caia em velocidade constante, podemos apenas setar um valor constante.
 // Exemplo: ysp=1 (Dessa forma, não importa quantos frames se passem, a gravidade será a mesma.
-ysp+=0.1
+ysp += P_grv;
 
 // XSP representa o valor de movimento do usuário na horizontal. Inicia com 0 para o usuário estar parado.
 // Esse valor é resetado para 0 a cada Frame, então, contanto que o player não mantenha a tecla de movimento pressionada, o personagem permanecerá parado.
-xsp=0
+xsp = 0;
 
 // keyboard_check verifica se tecla passada como parametro foi clicada.
 // order("D"): Basicamente estamos dizendo que queremos observar a tecla D, então quando clicamos em D o valor de  keyboard_check passa a ser true.
 // Fazendo com que o movimento do usuário seja incrementado em 2.
-if keyboard_check(ord("D")) {
-	xsp += 2
+if (keyboard_check(vk_right)) {
+    // Caso a tecla "D" tenha sido pressionada
+    xsp += 5;
 }
-
 // Mesma situação descrita acima, porém aqui quando a tecla A é clicada reduzimos o valor de xsp, fazendo com que o personagem ande para o lado oposto.
-if keyboard_check(ord("A")) {
-	xsp -= 2
+if keyboard_check(vk_left) {
+	xsp -= 5;
 }
 
 // place_meeting verifica se existe uma colisão entre o player e o hitbox, caso seja true, significa que o usuário está no chão.
