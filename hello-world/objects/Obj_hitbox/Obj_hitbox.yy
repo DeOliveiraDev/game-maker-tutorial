@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_hitbox",
+  "%Name":"obj_hitbox",
   "eventList":[],
   "managed":true,
-  "name":"Obj_hitbox",
+  "name":"obj_hitbox",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,7 +26,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"Spr_hitbox",
     "path":"sprites/Spr_hitbox/Spr_hitbox.yy",
