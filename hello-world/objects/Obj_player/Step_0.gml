@@ -1,48 +1,55 @@
-// O evento de STEP roda a cada frame do jogo.
+//Coisas que tem que acontecer toda hora
+yspd += grav; //aplica a gravidade
 
-// Simulador de gravidade, a cada instante aumentamos a gravidade do player, fazendo com que ele caia mais rapidamente.
-// Se quisermos que o player caia em velocidade constante, podemos apenas setar um valor constante.
-// Exemplo: ysp=1 (Dessa forma, não importa quantos frames se passem, a gravidade será a mesma.
-ysp += P_grv;
+//butoes do personagem
+Key_right = keyboard_check(vk_right);
+key_left = keyboard_check(vk_left);
+Key_jump_press = keyboard_check_pressed(vk_space);
 
-// XSP representa o valor de movimento do usuário na horizontal. Inicia com 0 para o usuário estar parado.
-// Esse valor é resetado para 0 a cada Frame, então, contanto que o player não mantenha a tecla de movimento pressionada, o personagem permanecerá parado.
-xsp = 0;
+//movimento de X (de esquerda para direita
+moveDir = Key_right - key_left;
+xspd = moveDir*moveSpd //calcula a velocidade e o lado com negativo sendo esq e positivo dir
 
-
-// keyboard_check verifica se tecla passada como parametro foi clicada.
-// order("D"): Basicamente estamos dizendo que queremos observar a tecla D, então quando clicamos em D o valor de  keyboard_check passa a ser true.
-// Fazendo com que o movimento do usuário seja incrementado em 2.
-if (keyboard_check(vk_right)) {
-    // Caso a tecla "D" tenha sido pressionada
-
-	sprite_index = Spr_player_run;
-	image_xscale = 1;
-	    xsp += 5;
-}
-// Mesma situação descrita acima, porém aqui quando a tecla A é clicada reduzimos o valor de xsp, fazendo com que o personagem ande para o lado oposto.
-if keyboard_check(vk_left) {
 	
-	sprite_index = Spr_player_run;
-	image_xscale = -1;
-	xsp -= 5;
-}
-// place_meeting verifica se existe uma colisão entre o player e o hitbox, caso seja true, significa que o usuário está no chão.
-// OBS: na altura (Y) precisamos passar y+1 para verificar se há uma colisão logo abaixo do player. Se passar apenas y, não funciona.
-if place_meeting(x, y+1, obj_hitbox ) {
-	// É necessário resetar o valor de ysp para 0, para que o pulo ocorra, já que a cada frame estamos aumentando o valor da gravidade.
-	// Imagina que o valor da gravidade chegue a 4, a nossa validação abaixo de pulo, não iria mais funcionar.
-	ysp=0
+	var _subPixel = 0.25;
 	
-	// verifica se a tecla space foi clicada e reduz 4 pontos na gravidade, que faz com que o personagem pule.
-	if keyboard_check(vk_space) {
-		ysp=-4
+	if place_meeting(x + xspd, y, Obj_Hitbox)
+	{
+	//faz o personagem nao tocar na parede sei la algo assim
+	var _pixelcheck = _subPixel* sign(xspd);
+	while !place_meeting(x + _pixelcheck,y,Obj_Hitbox)
+	{
+		x += _pixelcheck;
 	}
+	xspd = 0;
+}
+if keyboard_check_pressed(ord("E"))
+{
+	instance_create_layer(x, y - 4, "instances", Obj_tiro)
 }
 
-// Essa função faz tudo funcionar, indica onde o usuário pode se mover e detecta colissões... (Pelo menos foi isso que eu entendi, sem ela não funciona rsrs)
-move_and_collide(xsp, ysp, obj_hitbox);
+x += xspd;
 
-if(xsp == 0){
-	sprite_index = Spr_player_idle;
+//movimento de Y ou seja pra baixo e pra cima, gravidade e afins
+
+yspd += grav; //aqui eu adicionei gravidade ao boneco que nem na vida real
+
+//limitador de velocidade de queda
+if yspd > termVel {yspd = termVel}
+if Key_jump_press && place_meeting(x , y+1, Obj_Hitbox)
+{
+	yspd = jspd;
 }
+
+if place_meeting(x, y + yspd, Obj_Hitbox)
+	{
+	//faz o personagem nao tocar na parede sei la algo assim
+	var _pixelcheck = _subPixel * sign(yspd);
+	while !place_meeting(x ,y + _pixelcheck,Obj_Hitbox)
+	{
+		y += _pixelcheck;
+	}
+	yspd = 0;
+}
+
+y += yspd;
