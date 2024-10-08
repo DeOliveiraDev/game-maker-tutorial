@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"Font_gamer",
+  "%Name":"fnt_gamer1",
   "AntiAlias":0,
   "applyKerning":0,
   "ascender":21,
@@ -118,7 +118,7 @@
   "last":0,
   "lineHeight":21,
   "maintainGms1Font":false,
-  "name":"Font_gamer",
+  "name":"fnt_gamer1",
   "parent":{
     "name":"Fontes",
     "path":"folders/Fontes.yy",
