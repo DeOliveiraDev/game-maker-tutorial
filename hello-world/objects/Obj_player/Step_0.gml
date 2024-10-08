@@ -56,7 +56,7 @@ while (keyboard_check(vk_shift) && in_ground && moveSpd < 12) {
     moveSpd += 0.4; // Incrementa o moveSpd em 0.8 a cada ciclo
 } //condição compacta: se a tecla Shift estiver pressionada, moveSpd será definido como 8; caso contrário, será 4. 
 while (!keyboard_check(vk_shift) && in_ground && moveSpd > 4) {
-    moveSpd -= 0.2; // Incrementa o moveSpd em 0.8 a cada ciclo
+    moveSpd -= 0.002; // Incrementa o moveSpd em 0.8 a cada ciclo
 }
 if Key_jump_press && place_meeting(x , y+1, Obj_Hitbox)
 {
