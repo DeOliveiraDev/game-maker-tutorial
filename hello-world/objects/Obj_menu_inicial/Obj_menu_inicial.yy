@@ -10,8 +10,8 @@
   "name":"Obj_menu_inicial",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Inicio",
+    "path":"folders/Objetos/Inicio.yy",
   },
   "parentObjectId":null,
   "persistent":false,

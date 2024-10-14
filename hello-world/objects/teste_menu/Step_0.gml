@@ -17,7 +17,7 @@ if (keyboard_check_pressed(vk_enter)) {
     // Ações baseadas na opção selecionada
     switch (selected_option) {
         case 0: // Se "Novo Jogo" for selecionado
-            room_goto(Green_stage); // Muda para a sala do jogo
+            room_goto(Red_stage); // Muda para a sala do jogo
             break;
         case 1: // Se "Continuar" for selecionado
             // Adiciona lógica para carregar o jogo, se houver

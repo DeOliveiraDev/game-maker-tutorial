@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"teste",
+  "%Name":"Background_start",
   "eventList":[],
   "managed":true,
-  "name":"teste",
+  "name":"Background_start",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"Inicio",
+    "path":"folders/Objetos/Inicio.yy",
   },
   "parentObjectId":null,
   "persistent":false,

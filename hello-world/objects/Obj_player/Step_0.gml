@@ -1,12 +1,16 @@
 //Coisas que tem que acontecer toda hora
 yspd += grav; //aplica a gravidade
-//aplica um limite ao dash
+//pega os dados da camera, tamanho e largura
+var view_x = camera_get_view_x(view_camera[0]);
+var view_y = camera_get_view_y(view_camera[0]);
+var view_w = camera_get_view_width(view_camera[0]);
+var view_h = camera_get_view_height(view_camera[0]);
 
 //butoes do personagem
 Key_right = keyboard_check(vk_right);
 key_left = keyboard_check(vk_left);
 Key_jump_press = keyboard_check_pressed(vk_space);
-
+                                            
 //movimento de X (de esquerda para direita
 moveDir = Key_right - key_left;
 xspd = moveDir*moveSpd //calcula a velocidade e o lado com negativo sendo esq e positivo dir
@@ -25,11 +29,11 @@ xspd = moveDir*moveSpd //calcula a velocidade e o lado com negativo sendo esq e 
 	xspd = 0;
 }
 #region //animações
-if moveDir == 1{
+if moveDir >= 1{
 	sprite_index = Spr_player_run
 	image_xscale = 1
 }
-if moveDir == -1{
+if moveDir <= -1{
 	sprite_index = Spr_player_run
 	image_xscale = -1
 }
@@ -38,10 +42,7 @@ if moveDir == 0{
 }
 #endregion
 #region //ataques do personagem
-if keyboard_check_pressed(ord("E"))
-{
-	instance_create_layer(x, y - 4, "instances", Obj_tiro)
-}
+
 #endregion
 x += xspd;
 
@@ -77,3 +78,18 @@ if place_meeting(x, y + yspd, Obj_Hitbox)
 }
 
 y += yspd;
+#region fada que atira
+if (!instance_exists(Obj_fada)) {
+
+	var pos_x = irandom_range(view_x, view_x + view_w);
+    var pos_y = irandom_range(view_y, view_y + view_h);
+	instance_create_layer(pos_x, pos_y, "Instances", Obj_fada);
+}
+if (instance_number(Obj_fada) > 1) {
+    // Se houver mais de uma instância, destrói a instância extra
+    with (Obj_fada) {
+        instance_destroy();
+        // Interrompe o loop para que apenas uma instância seja destruída por vez
+        break;
+    }
+}
