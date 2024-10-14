@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Red Planet",
-    "path":"folders/Sprites/Planets/Red Planet.yy",
+    "path":"folders/Sprites/Planetas/Planets/Red Planet.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

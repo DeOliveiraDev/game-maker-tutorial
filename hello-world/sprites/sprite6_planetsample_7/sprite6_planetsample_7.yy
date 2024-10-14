@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Completed Planets",
-    "path":"folders/Sprites/Completed Planets.yy",
+    "path":"folders/Sprites/Planetas/Completed Planets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

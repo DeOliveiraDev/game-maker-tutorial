@@ -85,9 +85,22 @@ if (!instance_exists(Obj_fada)) {
     var pos_y = irandom_range(view_y, view_y + view_h);
 	instance_create_layer(pos_x, pos_y, "Instances", Obj_fada);
 }
+if (!instance_exists(Player_life)) {
+
+	var pos_x = 0;
+    var pos_y = 0;
+	instance_create_layer(pos_x, pos_y, "HUD", Player_life);
+}
 if (instance_number(Obj_fada) > 1) {
     // Se houver mais de uma instância, destrói a instância extra
     with (Obj_fada) {
+        instance_destroy();
+        // Interrompe o loop para que apenas uma instância seja destruída por vez
+        break;
+    }
+}if (instance_number(Player_life) > 1) {
+    // Se houver mais de uma instância, destrói a instância extra
+    with (Player_life) {
         instance_destroy();
         // Interrompe o loop para que apenas uma instância seja destruída por vez
         break;

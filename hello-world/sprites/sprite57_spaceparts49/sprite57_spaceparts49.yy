@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Space Parts",
-    "path":"folders/Sprites/Space Parts.yy",
+    "path":"folders/Sprites/Planetas/Space Parts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
