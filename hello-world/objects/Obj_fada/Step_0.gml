@@ -1,4 +1,4 @@
-if (keyboard_check_pressed(ord("E"))) {
+if (mouse_check_button_pressed(mb_left)) {
     var tiro_x = x;
     
     // Ajusta a posição com base na direção do Obj_player

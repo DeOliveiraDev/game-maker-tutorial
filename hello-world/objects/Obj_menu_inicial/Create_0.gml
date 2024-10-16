@@ -1,4 +1,4 @@
-window_set_fullscreen(true);
+window_set_size(800, 600);
 // Evento Create: Inicializa as variáveis do menu
 
 // Cria um array com as opções do menu

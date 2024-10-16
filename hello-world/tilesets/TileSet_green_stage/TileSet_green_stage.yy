@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"Sprite148",
-    "path":"sprites/Sprite148/Sprite148.yy",
+    "name":"Spro_greenmap",
+    "path":"sprites/Spro_greenmap/Spro_greenmap.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

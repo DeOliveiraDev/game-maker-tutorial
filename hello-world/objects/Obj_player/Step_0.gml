@@ -7,8 +7,8 @@ var view_w = camera_get_view_width(view_camera[0]);
 var view_h = camera_get_view_height(view_camera[0]);
 
 //butoes do personagem
-Key_right = keyboard_check(vk_right);
-key_left = keyboard_check(vk_left);
+Key_right = keyboard_check(ord("D"));
+key_left = keyboard_check(ord("A"));
 Key_jump_press = keyboard_check_pressed(vk_space);
                                             
 //movimento de X (de esquerda para direita
@@ -43,6 +43,8 @@ if moveDir == 0{
 #endregion
 #region //ataques do personagem
 
+
+
 #endregion
 x += xspd;
 
@@ -53,18 +55,20 @@ yspd += grav; //aqui eu adicionei gravidade ao boneco que nem na vida real
 //limitador de velocidade de queda
 if yspd > termVel {yspd = termVel}
 #region //controles
-while (keyboard_check(vk_shift) && in_ground && moveSpd < 12) {
-    moveSpd += 0.4; // Incrementa o moveSpd em 0.8 a cada ciclo
+if (keyboard_check(vk_shift) && in_ground) {
+    moveSpd = 8;
+	 image_speed = 1.5;
 } //condição compacta: se a tecla Shift estiver pressionada, moveSpd será definido como 8; caso contrário, será 4. 
-while (!keyboard_check(vk_shift) && in_ground && moveSpd > 4) {
-    moveSpd -= 0.002; // Incrementa o moveSpd em 0.8 a cada ciclo
+if (!keyboard_check(vk_shift) && in_ground ) {
+    moveSpd = 4; 
+	image_speed = 1;
 }
 if Key_jump_press && place_meeting(x , y+1, Obj_Hitbox)
 {
 	yspd = jspd;
 	in_ground = false
 }
-
+#endregion
 if place_meeting(x, y + yspd, Obj_Hitbox)
 	{
 	//faz o personagem nao tocar na parede sei la algo assim
@@ -78,7 +82,13 @@ if place_meeting(x, y + yspd, Obj_Hitbox)
 }
 
 y += yspd;
-#region fada que atira
+#region coisas dos personagem como a fada e hud e etc
+if (!instance_exists(Obj_hp_bar)) {
+
+	var pos_x = 0;
+    var pos_y = 1000;
+	instance_create_layer(pos_x, pos_y, "HUD", Obj_hp_bar);
+	
 if (!instance_exists(Obj_fada)) {
 
 	var pos_x = irandom_range(view_x, view_x + view_w);
@@ -88,9 +98,10 @@ if (!instance_exists(Obj_fada)) {
 if (!instance_exists(Player_life)) {
 
 	var pos_x = 0;
-    var pos_y = 0;
-	instance_create_layer(pos_x, pos_y, "HUD", Player_life);
+    var pos_y = 1000;
+	instance_create_layer(pos_x, pos_y, "HUD_1", Player_life);
 }
+
 if (instance_number(Obj_fada) > 1) {
     // Se houver mais de uma instância, destrói a instância extra
     with (Obj_fada) {
@@ -106,3 +117,5 @@ if (instance_number(Obj_fada) > 1) {
         break;
     }
 }
+}
+#endregion

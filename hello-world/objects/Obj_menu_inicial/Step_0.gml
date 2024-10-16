@@ -15,16 +15,14 @@ if (keyboard_check_pressed(vk_down)) {
 // Verifica se a tecla "Enter" foi pressionada
 if (keyboard_check_pressed(vk_enter)) {
     // Ações baseadas na opção selecionada
-    switch (selected_option) {
-        case 0: // Se "Novo Jogo" for selecionado
-            room_goto(Stage_selection); // Muda para a sala do jogo
-            break;
-        case 1: // Se "Continuar" for selecionado
-            // Adiciona lógica para carregar o jogo, se houver
-            show_message("Continuar não implementado."); // Mensagem de placeholder
-            break;
-        case 2: // Se "Sair" for selecionado
-            game_end(); // Encerra o jogo
-            break;
+    if (selected_option == 0) {
+        // Se "Novo Jogo" for selecionado
+        room_goto(Stage_selection); // Muda para a sala do jogo
+    } else if (selected_option == 1) {
+        // Se "Continuar" for selecionado
+        show_message("Continuar não implementado."); // Mensagem de placeholder
+    } else if (selected_option == 2) {
+        // Se "Sair" for selecionado
+        game_end(); // Encerra o jogo
     }
 }

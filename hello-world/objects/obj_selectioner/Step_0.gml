@@ -37,6 +37,6 @@ Posições possíveis no campo 3x3:
 (x = 1288, y = 924)->  [Fundo Direita]
 */
 #endregion
-if selection_key and x == 0 and y == 0{
+if selection_key and x == 644 and y == 462{
 	room_goto(Red_stage);
 }
